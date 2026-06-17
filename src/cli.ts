@@ -95,7 +95,7 @@ Then run this command again.
   void fetch('https://citelens.dev/api/track/middleware-install', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ domain: domainName, version: '0.1.3' }),
+    body: JSON.stringify({ domain: domainName, version: '0.1.4' }),
     signal: AbortSignal.timeout(3000)
   }).catch(() => {})
 
