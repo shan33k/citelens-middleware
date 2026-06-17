@@ -1,0 +1,43 @@
+{
+  "name": "@citelens/middleware",
+  "version": "0.1.0",
+  "description": "Serve your CiteLens-hosted llms.txt and llms-full.txt natively in Next.js. No redirects.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "llms.txt",
+    "llms-full.txt",
+    "GEO",
+    "generative engine optimization",
+    "AI readability",
+    "AI search",
+    "ChatGPT",
+    "Next.js",
+    "middleware",
+    "citelens"
+  ],
+  "author": "CiteLens <shane@citelens.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shan33k/citelens-middleware"
+  },
+  "homepage": "https://citelens.dev",
+  "bugs": {
+    "url": "mailto:shane@citelens.dev"
+  },
+  "peerDependencies": {
+    "next": ">=14.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "next": "^14.0.0"
+  }
+}
