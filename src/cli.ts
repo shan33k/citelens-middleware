@@ -30,6 +30,42 @@ async function main() {
     .replace(/\/$/, '')
     .toLowerCase()
 
+  // Check if files exist on CiteLens
+  console.log('\nChecking CiteLens for your files...')
+
+  const checkUrl =
+    `https://citelens.dev/serve/${cleanDomain}/llms.txt`
+
+  try {
+    const res = await fetch(checkUrl, {
+      method: 'HEAD',
+      signal: AbortSignal.timeout(5000)
+    })
+
+    if (!res.ok) {
+      console.log(`
+No llms.txt found for ${cleanDomain} on CiteLens.
+
+Generate yours first at:
+https://citelens.dev
+
+Then run this command again.
+    `)
+      rl.close()
+      process.exit(1)
+    }
+
+    console.log('Files found. Setting up middleware...\n')
+
+  } catch {
+    console.log(`
+Could not reach CiteLens to verify your files.
+Check your connection and try again.
+  `)
+    rl.close()
+    process.exit(1)
+  }
+
   const middlewareContent = `import { citeLensMiddleware } from '@citelens/middleware'
 
 export default citeLensMiddleware({
@@ -56,8 +92,18 @@ export const config = {
     console.log('\nCreated middleware.ts')
   }
 
+  // middleware.ts imports the package, so make sure it's a dependency.
+  const installed = fs.existsSync(
+    path.join(process.cwd(), 'node_modules', '@citelens', 'middleware')
+  )
+
   console.log(`
-Done. Deploy your site and your llms.txt will be live at:
+Done.${installed ? '' : `
+
+Install the package in your project so the import resolves:
+  npm install @citelens/middleware`}
+
+Deploy your site and your llms.txt will be live at:
 https://${cleanDomain}/llms.txt
 https://${cleanDomain}/llms-full.txt
 

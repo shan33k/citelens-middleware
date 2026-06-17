@@ -1,6 +1,6 @@
 {
   "name": "@citelens/middleware",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Serve your CiteLens-hosted llms.txt and llms-full.txt natively in Next.js. No redirects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
