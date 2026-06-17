@@ -15,7 +15,22 @@ CiteLens generates, hosts, and maintains your llms.txt
 automatically. This middleware package serves it natively
 from your domain.
 
-## Installation
+## Quick start (recommended)
+
+From your Next.js project root, run the setup CLI. It verifies your
+llms.txt is hosted on CiteLens, installs the package, and writes
+middleware.ts for you:
+
+```bash
+npx citelens-setup
+```
+
+You'll be prompted for your domain. That's it. Deploy and your files
+are live.
+
+## Installation (manual)
+
+If you'd rather wire it up yourself:
 
 ```bash
 npm install @citelens/middleware
